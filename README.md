@@ -1,62 +1,45 @@
-# Process Scheduling - Waiting Time and Turnaround Time Calculation
+# FIFO Page Replacement Algorithm
 
-This is a C++ implementation of a scheduling algorithm that calculates the waiting time and turnaround time for a set of processes based on their burst times.
+This program implements the FIFO (First-In-First-Out) page replacement algorithm in C++. It simulates a page replacement scenario where pages are loaded into frames based on their arrival order. If a frame needs to be replaced, the oldest page in the frame is removed.
 
-## Table of Contents
+## Features
 
-- [Overview](#overview)
-- [Requirements](#requirements)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Code Explanation](#code-explanation)
-- [Contributing](#contributing)
-- [License](#license)
+- Calculates the number of page faults using the FIFO page replacement algorithm.
+- Allows the user to input the number of pages, frame capacity, and the page reference string.
 
-## Overview
+## Getting Started
 
-This program simulates the calculation of waiting time and turnaround time for a set of processes. It asks for the number of processes, their IDs, and their burst times, and then computes and displays the waiting time and turnaround time for each process, as well as the average waiting and turnaround times.
-
-## Requirements
+### Prerequisites
 
 - A C++ compiler (e.g., g++)
-- Standard C++ library
 
-## Installation
+### Installation
 
-1. Clone the repository:
+1. Clone this repository or download the source code.
+2. Navigate to the directory where the source code is located.
 
-   ```bash
-   git clone https://github.com/yourusername/process-scheduling.git
-   cd process-scheduling
 ###Code Explanation
-The code is structured as follows:
+Code Explanation
+The program reads the number of pages, the capacity of frames, and the page reference string from the user. It uses an unordered set to represent the set of current pages and a queue to store pages in a FIFO manner. It then simulates the FIFO page replacement algorithm, counting the number of page faults.
 
-Functions:
+Function: pageFaults
+Input: Array of page references, number of pages, capacity of frames.
+Output: Number of page faults.
+Complexity: O(n)
+Main Function
+Prompts the user for the number of pages and the capacity of frames.
+Reads the page reference string from the user.
+Calls the pageFaults function to calculate and print the number of page faults.
 
-findWaitingTime: Calculates the waiting time for each process.
-findTurnAroundTime: Calculates the turnaround time for each process.
-findavgTime: Calls the above functions and computes the average waiting and turnaround times.
-Main Function:
+### Compilation
 
-Prompts the user to input the number of processes, process IDs, and burst times.
-Calls findavgTime to perform the calculations and display the results.
+To compile the program, run the following command in your terminal:
 
-###Example Output
-   ```bash
+  ```bash
+  g++ -o fifo_page_replacement fifo_page_replacement.cpp
 
-Enter the number of processes: 3
-Enter the process ID for process 1: 1
-Enter the burst time for process 1: 5
-Enter the process ID for process 2: 2
-Enter the burst time for process 2: 3
-Enter the process ID for process 3: 3
-Enter the burst time for process 3: 8
-
-Processes  Burst time  Waiting time  Turn around time
- 1          5          0             5
- 2          3          5             8
- 3          8          8             16
-
-Average waiting time = 4.33333
-Average turn around time = 9.66667
-
+Example Usage
+Enter the number of pages: 12
+Enter the number of frames: 3
+Enter the page reference string: 7 0 1 2 0 3 0 4 2 3 0 3 2
+Page Faults: 9
